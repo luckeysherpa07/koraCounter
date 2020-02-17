@@ -8,7 +8,7 @@ const Main = createBottomTabNavigator({
 }, {
   tabBarOptions: {
     style: {
-      backgroundColor: "gray"
+      backgroundColor: "white"
     }
   }
 });
