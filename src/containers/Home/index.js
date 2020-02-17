@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from "react-native";
 
-const Home = (props) => (
+const Home = () => (
   <View style={styles.container}>
     <Text>Home</Text>
   </View>

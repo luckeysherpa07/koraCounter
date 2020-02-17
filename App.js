@@ -9,6 +9,6 @@
 import React from 'react';
 import Root from './src/routes/root';
 
-const App = () => <Root />
+const App = () => <Root />;
 
 export default App;

@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from "react-native";
 
-const Map = (props) => (
+const Map = () => (
   <View style={styles.container}>
     <Text>Map</Text>
   </View>
