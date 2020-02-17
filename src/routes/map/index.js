@@ -8,7 +8,7 @@ const MapNavigator = createStackNavigator({
 });
 
 MapNavigator.navigationOptions = {
-  tabBarLabel: "Home"
+  tabBarLabel: "Map"
 };
 
 export default MapNavigator;
