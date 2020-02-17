@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import Map from '../../containers/Map';
+import Map from 'koraCounter/src/containers/Map';
 
 const MapNavigator = createStackNavigator({
   Map: {

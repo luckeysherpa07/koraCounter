@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Home from '../home';
-import Map from '../map'
+import Home from 'koraCounter/src/routes/home';
+import Map from 'koraCounter/src/routes/map'
 
 const Main = createBottomTabNavigator({
   Home,
