@@ -1,5 +1,5 @@
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import Main from '../main';
+import Main from 'koraCounter/src/routes/main';
 
 const RootNavigator = createSwitchNavigator({
   Main,

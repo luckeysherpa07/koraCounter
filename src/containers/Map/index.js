@@ -1,5 +1,5 @@
 import React from "react";
-import MapComponent from "../../components/pages/Map"
+import MapComponent from "koraCounter/src/components/pages/Map"
 
 const Map = () => {
   return <MapComponent />;

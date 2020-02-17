@@ -1,5 +1,5 @@
 import React from "react";
-import HomeComponent from "../../components/pages/Home"
+import HomeComponent from "koraCounter/src/components/pages/Home"
 
 const Home = () => {
   return <HomeComponent />;
