@@ -1,21 +1,8 @@
 import React from "react";
-import { 
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
+import MapComponent from "../../components/pages/Map"
 
-const Map = () => (
-  <View style={styles.container}>
-    <Text>Map</Text>
-  </View>
-  )
+const Map = () => {
+  return <MapComponent />;
+}
+
 export default Map;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});

@@ -1,21 +1,8 @@
 import React from "react";
-import { 
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
+import HomeComponent from "../../components/pages/Home"
 
-const Home = () => (
-  <View style={styles.container}>
-    <Text>Home</Text>
-  </View>
-  )
+const Home = () => {
+  return <HomeComponent />;
+}
+
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
