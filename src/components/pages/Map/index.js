@@ -1,34 +1,16 @@
 import React from "react";
-import {
-  View,
-  StyleSheet
-} from "react-native";
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import styled from 'styled-components';
+import MapArea from "koraCounter/src/components/organisms/Map/MapArea";
+
+const Wrapper = styled.View`
+  flex: 1
+  alignItems: center
+  justifyContent: center
+`
 
 const Map = () => (
-  <View style={styles.container}>
-    <MapView
-      provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-      style={styles.map}
-      region={{
-        latitude: 27.7172,
-        longitude: 85.3240,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
-      }}
-    >
-    </MapView>
-  </View>
+  <Wrapper>
+    <MapArea />
+  </Wrapper>
 )
 export default Map;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  }
-});
