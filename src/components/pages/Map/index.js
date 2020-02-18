@@ -8,9 +8,9 @@ const Wrapper = styled.View`
   justifyContent: center
 `
 
-const Map = () => (
+const Map = ({ initialRegion }) => console.log("This is the Wrapper page", initialRegion) || (
   <Wrapper>
-    <MapArea />
+    <MapArea initialRegion={initialRegion} />
   </Wrapper>
 )
 export default Map;
