@@ -16,7 +16,7 @@ const MapArea = ({ initialRegion }) => (
     }}
   >
   </MapView>
-  )
+)
 export default MapArea;
 
 const styles = StyleSheet.create({
