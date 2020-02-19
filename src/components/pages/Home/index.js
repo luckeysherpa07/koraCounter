@@ -1,21 +1,20 @@
 import React from "react";
-import { 
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
+import styled from 'styled-components';
 
-const Home = () => (
-  <View style={styles.container}>
-    <Text>Home</Text>
-  </View>
+const Title = styled.Text`
+  fontSize: 20
+`;
+
+const Wrapper = styled.View`
+  flex: 1
+  justifyContent: center
+  alignItems: center
+`
+
+const Home = ({ initialRegion }) => (
+  <Wrapper>
+    <Title>Latitude: {initialRegion.latitude}</Title>
+    <Title>Longitude: {initialRegion.latitude}</Title>
+  </Wrapper>
   )
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
