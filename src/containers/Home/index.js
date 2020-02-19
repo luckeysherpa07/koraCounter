@@ -3,7 +3,8 @@ import RNLocation from 'react-native-location';
 import HomeComponent from "koraCounter/src/components/pages/Home"
 
 const Home = () => {
-  const [initialRegion, setInitialRegion] = useState();
+  const [latitudeValue, setlatitudeValue] = useState();
+  const [longitudeValue, setlongitudeValue] = useState();
 
   useEffect(() => {
     locationRequest();
@@ -18,15 +19,13 @@ const Home = () => {
     }).then((granted) => {
       if (granted) {
         RNLocation.subscribeToLocationUpdates(locations => {
-          setInitialRegion({
-            latitude: locations[0].latitude,
-            longitude: locations[0].longitude,
-          });
+          setlatitudeValue(locations[0].latitude)
+          setlongitudeValue(locations[0].longitude)
         });
       }
     });
   };
-  return <HomeComponent initialRegion={initialRegion} />;
+  return <HomeComponent latitude={latitudeValue} longitude={longitudeValue} />;
 }
 
 export default Home;

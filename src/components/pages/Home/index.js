@@ -11,10 +11,10 @@ const Wrapper = styled.View`
   alignItems: center
 `
 
-const Home = ({ initialRegion }) => (
+const Home = ({ latitude, longitude }) => (
   <Wrapper>
-    <Title>Latitude: {initialRegion.latitude}</Title>
-    <Title>Longitude: {initialRegion.latitude}</Title>
+    <Title>Latitude: {latitude}</Title>
+    <Title>Longitude: {longitude}</Title>
   </Wrapper>
   )
 export default Home;
