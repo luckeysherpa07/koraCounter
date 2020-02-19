@@ -8,7 +8,7 @@ const Wrapper = styled.View`
   justifyContent: center
 `
 
-const Map = ({ initialRegion }) => console.log("This is the Wrapper page", initialRegion) || (
+const Map = ({ initialRegion }) => (
   <Wrapper>
     <MapArea initialRegion={initialRegion} />
   </Wrapper>
