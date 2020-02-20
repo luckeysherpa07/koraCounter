@@ -6,6 +6,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 const MapArea = ({ initialRegion }) => (
   <MapView
+    showsUserLocation
     provider={PROVIDER_GOOGLE} // remove if not using Google Maps
     style={styles.map}
     initialRegion={initialRegion}
