@@ -5,9 +5,16 @@ import HomeComponent from "koraCounter/src/components/pages/Home"
 const Home = () => {
   const [latitudeValue, setlatitudeValue] = useState();
   const [longitudeValue, setlongitudeValue] = useState();
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    locationRequest();
+    setInterval( () => 
+    {
+      locationRequest();
+      console.log( "seconds", seconds )
+      setSeconds( seconds + 1 );
+      console.log( "seconds", seconds )
+    }, 1000);
   }, []);
 
   const locationRequest = () => {
@@ -19,13 +26,15 @@ const Home = () => {
     }).then((granted) => {
       if (granted) {
         RNLocation.subscribeToLocationUpdates(locations => {
+          // console.log("this is the fucking loctaion", locations[0]);
           setlatitudeValue(locations[0].latitude)
           setlongitudeValue(locations[0].longitude)
         });
-      }
+    }
     });
   };
-  return <HomeComponent latitude={latitudeValue} longitude={longitudeValue} />;
+  
+  return <HomeComponent latitude={latitudeValue} longitude={longitudeValue} seconds={seconds}/>;
 }
 
 export default Home;
