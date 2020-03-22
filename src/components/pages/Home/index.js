@@ -11,10 +11,16 @@ const Wrapper = styled.View`
   alignItems: center
 `
 
-const Home = ({ latitude, longitude }) => (
-  <Wrapper>
-    <Title>Latitude: {latitude}</Title>
-    <Title>Longitude: {longitude}</Title>
-  </Wrapper>
+// eslint-disable-next-line react/prop-types
+const Home = ({ latitude, longitude, easting, northing, countNumber }) => {
+  return (
+    <Wrapper>
+      <Title>Latitude: {latitude}</Title>
+      <Title>Longitude: {longitude}</Title>
+      <Title>X: {easting}</Title>
+      <Title>Y: {northing}</Title>
+      <Title>Total Kora: {countNumber}</Title>
+    </Wrapper>
   )
+}
 export default Home;
