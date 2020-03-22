@@ -126,8 +126,24 @@ class LapCounter {
 const Home = () => {
   const [latitudeValue, setlatitudeValue] = useState();
   const [longitudeValue, setlongitudeValue] = useState();
-  const [ koraNumber, setKoraNumber ] = useState();
-  const [seconds, setSeconds] = useState(0);
+  const [koraNumber, setKoraNumber] = useState();
+
+  const lapCounter = new LapCounter(
+    new Coordinate(-1.0, 0.0),
+    new Coordinate(0.0, 0.0)
+  );
+
+  // clockwise rotation
+  const positions = [
+    new Coordinate(-1, 0),
+    new Coordinate(0, -1),
+    new Coordinate(1, 0),
+    new Coordinate(0, 1),
+  ];
+
+  const nPosition = positions.length;
+  let iPosition = 0;
+  const { easting, northing } = fromLatLon(latitudeValue, longitudeValue);
 
   useEffect(() => {
     locationRequest();
@@ -151,27 +167,8 @@ const Home = () => {
     });
   };
 
-  const lapCounter = new LapCounter(
-    new Coordinate(-1.0, 0.0),
-    new Coordinate(0.0, 0.0)
-  );
-
-  // clockwise rotation
-  const positions = [
-    new Coordinate(-1, 0),
-    new Coordinate(0, -1),
-    new Coordinate(1, 0),
-    new Coordinate(0, 1),
-  ];
-
-  const nPosition = positions.length;
-  let iPosition = 0;
-  const { easting, northing } = fromLatLon(latitudeValue, longitudeValue);
-
-  const countNumber = 0;
-  
   function initiateInterval() {
-    setInterval(refreshCounter, 3000);
+    setInterval(refreshCounter, 2000);
   }
 
   function refreshCounter() {
@@ -184,11 +181,10 @@ const Home = () => {
 
   return <HomeComponent
     latitude={latitudeValue}
-    longitude={longitudeValue} 
+    longitude={longitudeValue}
     easting={easting}
     northing={northing}
     countNumber={koraNumber}
-    seconds={seconds}
   />;
 }
 
