@@ -128,12 +128,7 @@ const Home = () => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    setInterval(() => {
-      locationRequest();
-      console.log("seconds", seconds)
-      setSeconds(seconds + 1);
-      console.log("seconds", seconds)
-    }, 1000);
+    locationRequest();
   }, []);
 
   const locationRequest = () => {
@@ -165,6 +160,13 @@ const Home = () => {
     new Coordinate(1, 0),
     new Coordinate(0, 1),
   ];
+
+  setInterval(() => {
+    console.log("seconds", seconds)
+    setSeconds(seconds + 1);
+    console.log("seconds", seconds)
+  }, 10000);
+
   const nPosition = positions.length;
   let iPosition = 0;
 
@@ -175,7 +177,14 @@ const Home = () => {
 
   const countNumber = 0;
 
-  return <HomeComponent latitude={latitudeValue} longitude={longitudeValue} easting={easting} northing={northing} countNumber={countNumber}/>;
+  return <HomeComponent
+    latitude={latitudeValue}
+    longitude={longitudeValue} e
+    asting={easting}
+    northing={northing}
+    countNumber={countNumber}
+    seconds={seconds}
+  />;
 }
 
 export default Home;
