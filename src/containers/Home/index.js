@@ -173,7 +173,9 @@ const Home = () => {
   lapCounter.update(positions[iPosition = iPosition % nPosition]);
   iPosition++;
 
-  return <HomeComponent latitude={latitudeValue} longitude={longitudeValue} easting={easting} northing={northing} />;
+  const countNumber = 0;
+
+  return <HomeComponent latitude={latitudeValue} longitude={longitudeValue} easting={easting} northing={northing} countNumber={countNumber}/>;
 }
 
 export default Home;

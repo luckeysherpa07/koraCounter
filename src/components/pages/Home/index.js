@@ -11,7 +11,7 @@ const Wrapper = styled.View`
   alignItems: center
 `
 
-const Home = ({ latitude, longitude, easting, northing, seconds }) => 
+const Home = ({ latitude, longitude, easting, northing, countNumber, seconds }) => 
 {
   return (
   <Wrapper>
@@ -19,7 +19,7 @@ const Home = ({ latitude, longitude, easting, northing, seconds }) =>
     <Title>Longitude: {longitude}</Title>
     <Title>X: {easting}</Title>
     <Title>Y: {northing}</Title>
-    {/* <Title>Total Kora: { lapCounter.getCount() }</Title> */}
+    <Title>Total Kora: { countNumber }</Title>
     {/* <Title>Time: {seconds} sec(s)</Title> */}
   </Wrapper>
   )}
