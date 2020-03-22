@@ -129,16 +129,16 @@ const Home = () => {
   const [koraNumber, setKoraNumber] = useState();
 
   const lapCounter = new LapCounter(
-    new Coordinate(-1.0, 0.0),
-    new Coordinate(0.0, 0.0)
+    new Coordinate(338530.80, 3067480.33),
+    new Coordinate(338524.14, 3067417.25)
   );
 
   // clockwise rotation
   const positions = [
-    new Coordinate(-1, 0),
-    new Coordinate(0, -1),
-    new Coordinate(1, 0),
-    new Coordinate(0, 1),
+    new Coordinate(338530.80, 3067480.33),
+    new Coordinate(338467.59, 3067421.22),
+    new Coordinate(338519.70, 3067365.23),
+    new Coordinate(338580.77, 3067418.61),
   ];
 
   const nPosition = positions.length;
