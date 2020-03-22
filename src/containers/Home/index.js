@@ -149,6 +149,19 @@ const Home = () => {
     initiateInterval();
   }, []);
 
+  const initiateInterval = () => {
+    setInterval(refreshCounter, 3000);
+  }
+
+  const refreshCounter = () => {
+    locationRequest();
+    console.log("Current Position", positions[iPosition % nPosition]);
+    lapCounter.update(positions[iPosition = iPosition % nPosition]);
+    iPosition++;
+    setKoraNumber(lapCounter.getCount())
+    console.log(lapCounter.getCount())
+  }
+
   const locationRequest = () => {
     RNLocation.requestPermission({
       ios: 'whenInUse',
@@ -166,17 +179,8 @@ const Home = () => {
     });
   };
 
-  const initiateInterval = () => {
-    setInterval(refreshCounter, 2000);
-  }
-
-  const refreshCounter = () => {
-    locationRequest();
-    console.log("Current Position", positions[iPosition % nPosition]);
-    lapCounter.update(positions[iPosition = iPosition % nPosition]);
-    iPosition++;
-    setKoraNumber(lapCounter.getCount())
-    console.log(lapCounter.getCount())
+  const onPressStart = () => {
+    console.log("Start Button Pressed");
   }
 
   return <HomeComponent
@@ -185,6 +189,7 @@ const Home = () => {
     easting={easting}
     northing={northing}
     countNumber={koraNumber}
+    onPressStart={onPressStart}
   />;
 }
 
