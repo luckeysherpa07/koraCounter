@@ -146,7 +146,6 @@ const Home = () => {
   const { easting, northing } = fromLatLon(latitudeValue, longitudeValue);
 
   useEffect(() => {
-    locationRequest();
     initiateInterval();
   }, []);
 
@@ -167,11 +166,12 @@ const Home = () => {
     });
   };
 
-  function initiateInterval() {
+  const initiateInterval = () => {
     setInterval(refreshCounter, 2000);
   }
 
-  function refreshCounter() {
+  const refreshCounter = () => {
+    locationRequest();
     console.log("Current Position", positions[iPosition % nPosition]);
     lapCounter.update(positions[iPosition = iPosition % nPosition]);
     iPosition++;
