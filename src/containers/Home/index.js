@@ -94,7 +94,8 @@ class LapCounter {
 
   update(newPos) {
     const angle = this.currPosition.measureAngle(this.center, newPos);
-    console.log("THis is the value of th new Position", this.center)
+    console.log("Start Postiion", this.startPosition)
+    console.log("Center", this.center)
     if (this.angleIsClockwise(newPos, angle)) {
       this.sumOfAngles += angle;
     }
@@ -125,10 +126,12 @@ class LapCounter {
 const Home = () => {
   const [latitudeValue, setlatitudeValue] = useState();
   const [longitudeValue, setlongitudeValue] = useState();
+  const [ koraNumber, setKoraNumber ] = useState();
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     locationRequest();
+    initiateInterval();
   }, []);
 
   const locationRequest = () => {
@@ -161,28 +164,30 @@ const Home = () => {
     new Coordinate(0, 1),
   ];
 
-  setInterval(() => {
-    console.log("seconds", seconds)
-    setSeconds(seconds + 1);
-    console.log("seconds", seconds)
-  }, 10000);
-
   const nPosition = positions.length;
   let iPosition = 0;
-
   const { easting, northing } = fromLatLon(latitudeValue, longitudeValue);
-  console.log("THis is the value of easting and northing", positions[iPosition % nPosition]);
-  lapCounter.update(positions[iPosition = iPosition % nPosition]);
-  iPosition++;
 
   const countNumber = 0;
+  
+  function initiateInterval() {
+    setInterval(refreshCounter, 3000);
+  }
+
+  function refreshCounter() {
+    console.log("Current Position", positions[iPosition % nPosition]);
+    lapCounter.update(positions[iPosition = iPosition % nPosition]);
+    iPosition++;
+    setKoraNumber(lapCounter.getCount())
+    console.log(lapCounter.getCount())
+  }
 
   return <HomeComponent
     latitude={latitudeValue}
-    longitude={longitudeValue} e
-    asting={easting}
+    longitude={longitudeValue} 
+    easting={easting}
     northing={northing}
-    countNumber={countNumber}
+    countNumber={koraNumber}
     seconds={seconds}
   />;
 }
