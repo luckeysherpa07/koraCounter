@@ -136,11 +136,12 @@ const Home = () => {
   }, []);
 
   const lapCounter = new LapCounter(
-    new Coordinate(338530.80, 3067480.33),
-    new Coordinate(338524.14, 3067417.25)
+    new Coordinate(338530.80, 3067480.33), //initial co-ordinate of user (One side)
+    new Coordinate(338524.14, 3067417.25) // center co-ordinate of Boudha
   );
 
   // clockwise rotation
+  //Four demo position which is in four side of Boudha
   const positions = [
     new Coordinate(338530.80, 3067480.33),
     new Coordinate(338467.59, 3067421.22),
