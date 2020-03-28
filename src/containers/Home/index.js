@@ -132,11 +132,11 @@ const Home = () => {
 
   useEffect(() => {
     locationRequest();
-    initialLocationRequest();
+    // initialLocationRequest();
   }, []);
 
   const lapCounter = new LapCounter(
-    new Coordinate(338530.80, 3067480.33), //initial co-ordinate of user (One side)
+    new Coordinate(initialEasting, initialNorthing), //initial co-ordinate of user (One side)
     new Coordinate(338524.14, 3067417.25) // center co-ordinate of Boudha
   );
 
@@ -151,7 +151,6 @@ const Home = () => {
 
   const nPosition = positions.length;
   let iPosition = 0;
-  const { easting, northing } = fromLatLon(latitudeValue, longitudeValue);
 
   const initiateInterval = () => {
     setInterval(refreshCounter, 3000);
@@ -176,21 +175,24 @@ const Home = () => {
       if (granted) {
         RNLocation.subscribeToLocationUpdates(locations => {
           // console.log("this is the fucking loctaion", locations[0]);
+          const { easting, northing } = fromLatLon(locations[0].latitude, locations[0].longitude);
           setlatitudeValue(locations[0].latitude)
           setlongitudeValue(locations[0].longitude)
+          setInitialEasting(easting);
+          setInitialNorthing(northing);
         });
       }
     });
   };
 
-  const initialLocationRequest = () => {
-    setInitialEasting(easting);
-    setInitialNorthing(northing);
-    console.log("Inital Easting and Northing", easting, northing)
-  };
+  // const initialLocationRequest = () => {
+  //   setInitialEasting(easting);
+  //   setInitialNorthing(northing);
+  //   console.log("Inital Easting and Northing", easting, northing)
+  // };
 
   const onPressStart = () => {
-    initialLocationRequest();
+    // initialLocationRequest();
     initiateInterval();
   }
 
