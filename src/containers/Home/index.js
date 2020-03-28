@@ -126,7 +126,14 @@ class LapCounter {
 const Home = () => {
   const [latitudeValue, setlatitudeValue] = useState();
   const [longitudeValue, setlongitudeValue] = useState();
+  const [initialNorthing, setInitialNorthing] = useState();
+  const [initialEasting, setInitialEasting] = useState();
   const [koraNumber, setKoraNumber] = useState();
+
+  useEffect(() => {
+    locationRequest();
+    initialLocationRequest();
+  }, []);
 
   const lapCounter = new LapCounter(
     new Coordinate(338530.80, 3067480.33),
@@ -145,21 +152,17 @@ const Home = () => {
   let iPosition = 0;
   const { easting, northing } = fromLatLon(latitudeValue, longitudeValue);
 
-  useEffect(() => {
-    initiateInterval();
-  }, []);
-
   const initiateInterval = () => {
     setInterval(refreshCounter, 3000);
   }
 
   const refreshCounter = () => {
-    locationRequest();
     console.log("Current Position", positions[iPosition % nPosition]);
+    // locationRequest();
     lapCounter.update(positions[iPosition = iPosition % nPosition]);
     iPosition++;
     setKoraNumber(lapCounter.getCount())
-    console.log(lapCounter.getCount())
+    console.log("Count", lapCounter.getCount())
   }
 
   const locationRequest = () => {
@@ -179,15 +182,22 @@ const Home = () => {
     });
   };
 
+  const initialLocationRequest = () => {
+    setInitialEasting(easting);
+    setInitialNorthing(northing);
+    console.log("Inital Easting and Northing", easting, northing)
+  };
+
   const onPressStart = () => {
-    console.log("Start Button Pressed");
+    initialLocationRequest();
+    initiateInterval();
   }
 
   return <HomeComponent
     latitude={latitudeValue}
     longitude={longitudeValue}
-    easting={easting}
-    northing={northing}
+    // easting={easting}
+    // northing={northing}
     countNumber={koraNumber}
     onPressStart={onPressStart}
   />;
